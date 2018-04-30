@@ -51,7 +51,7 @@
                                     <tr>
                                         <td>{{ $d['kode_gejala']}}</td>
                                         <td>{{ $d['nama_gejala']}}</td>
-                                        <td>{{ $d['probabilitas'] }}</td>
+                                        <td>{{ $d['bobot'] }}</td>
                                     </tr>
                                 @endforeach
                             </tbody>
@@ -70,16 +70,7 @@
                                     <th width="10px;">:</th>
                                     <td>{{ number_format($data->hasil * 100,2) }} %</td>
                                 </tr>
-                                <tr>
-                                    <th>Penyebab</th>
-                                    <th>:</th>
-                                    <td>{{ $data->penyebab }}</td>
-                                </tr>
-                                <tr>
-                                    <th>Solusi</th>
-                                    <th>:</th>
-                                    <td>{{ $data->solusi }}</td>
-                                </tr>
+                               
                                 <tr>
                                     <td colspan="3"></td>
                                 </tr>
@@ -91,7 +82,7 @@
                         </table>
                     </div>
                     <div class="panel-footer">
-                        <a href="{{ URL::to('membership/') }}" class="btn btn-primary"><i class="fa fa-chevron-left"></i>  Kembali</a>
+                        <a href="{{ URL::to('membership/') }}" class="btn btn-danger"><i class="fa fa-chevron-left"></i>  Kembali</a>
                     </div>
 
                 </div>

@@ -38,15 +38,12 @@ class HomeController extends Controller
         $rules = DB::table('history_diagnosa')
             ->select(
                 'master_penyakit.nama_penyakit',
-                'master_solusi.nama_solusi',
-                'master_penyebab.nama_penyebab',
                 'history_diagnosa.created_at',
                 'history_diagnosa.gejala',
                 'history_diagnosa.nilai'
             )
             ->leftJoin('master_penyakit', 'history_diagnosa.kode_penyakit', '=', 'master_penyakit.kode_penyakit')
-            ->leftJoin('master_solusi', 'history_diagnosa.kode_solusi', '=', 'master_solusi.kode_solusi')
-            ->leftJoin('master_penyebab', 'history_diagnosa.kode_penyebab', '=', 'master_penyebab.kode_penyebab')
+          
             ->where('history_diagnosa.kode_user',$user->id)->limit(1);
         $history = $rules->get();
 
@@ -74,8 +71,8 @@ class HomeController extends Controller
 
             if ($value == '1') {
                 $gejala = DB::table('master_gejala')->where('kode_gejala', $key)->first();
-                $data = $gejala->probabilitas;
-                $master_gejala += $gejala->probabilitas;
+                $data = $gejala->bobot;
+                $master_gejala += $gejala->bobot;
 
                 $result = $gejala->kode_gejala;
                 array_push($jumlah_master_gejala, $data);
@@ -99,11 +96,9 @@ class HomeController extends Controller
  //       $gejala_data = Rules::wherein('kode_gejala',$daftar_gejala)->first();
  
         $gejala_data = collect(DB::connection('mysql')
-                        ->select("SELECT COUNT(*),kode_penyakit,kode_penyebab,kode_solusi FROM master_rules WHERE kode_gejala IN('$array') GROUP BY kode_penyakit ORDER BY COUNT(*) DESC"))->first();
+                        ->select("SELECT COUNT(*),kode_penyakit FROM master_rules WHERE kode_gejala IN('$array') GROUP BY kode_penyakit ORDER BY COUNT(*) DESC"))->first();
         if($gejala_data == TRUE){
             $penyakit = $this->info_penyakit($gejala_data->kode_penyakit);
-            $penyebab = $this->info_penyebab($gejala_data->kode_penyebab);
-            $solusi = $this->info_solusi($gejala_data->kode_solusi);
 
             //print_r($gejala); die();
 
@@ -115,8 +110,6 @@ class HomeController extends Controller
             //print_r($hasil); die();
             $data = (object)[
                 'penyakit' => $penyakit,
-                'solusi'=>$solusi,
-                'penyebab'=>$penyebab,
                 'hasil' => $hasil
             ];
 
@@ -128,7 +121,7 @@ class HomeController extends Controller
             $gejala_data_3 = '';
             foreach ($e->all() as $key => $value) {
                 if ($value == '1') {
-                    $gejala_set =  ['kode_gejala'=>$key,'nama_gejala'=>$this->info_gejala($key),'probabilitas'=>$this->prob_gejala($key)];
+                    $gejala_set =  ['kode_gejala'=>$key,'nama_gejala'=>$this->info_gejala($key),'bobot'=>$this->prob_gejala($key)];
                     $gejala_data_3 .= $this->info_gejala($key).',';
                     array_push($gejala_data_2, $gejala_set);
                 }
@@ -139,8 +132,6 @@ class HomeController extends Controller
             $s = new  History();
             $s->kode_user = $user->id;
             $s->kode_penyakit = $gejala_data->kode_penyakit;
-            $s->kode_penyebab = $gejala_data->kode_penyebab;
-            $s->kode_solusi = $gejala_data->kode_solusi;
             $s->gejala = $gejala_data_3;
             $s->nilai = $hasil;
             $s->save();
@@ -183,7 +174,7 @@ class HomeController extends Controller
     function prob_gejala($id)
     {
         $gejala = DB::table('master_gejala')->where('kode_gejala', $id)->first();
-        return $gejala->probabilitas;
+        return $gejala->bobot;
     }
 
 
@@ -194,15 +185,11 @@ class HomeController extends Controller
         $rules = DB::table('history_diagnosa')
             ->select(
                 'master_penyakit.nama_penyakit',
-                'master_solusi.nama_solusi',
-                'master_penyebab.nama_penyebab',
                 'history_diagnosa.created_at',
                 'history_diagnosa.gejala',
                 'history_diagnosa.nilai'
             )
             ->leftJoin('master_penyakit', 'history_diagnosa.kode_penyakit', '=', 'master_penyakit.kode_penyakit')
-            ->leftJoin('master_solusi', 'history_diagnosa.kode_solusi', '=', 'master_solusi.kode_solusi')
-            ->leftJoin('master_penyebab', 'history_diagnosa.kode_penyebab', '=', 'master_penyebab.kode_penyebab')
             ->where('history_diagnosa.kode_user',$user->id);
         $history = $rules->get();
         return view('membership.diagnosa_hasil_review',compact('user','history'));

@@ -54,9 +54,7 @@
     }
       
         <?php elseif($uri == 'register'):?>
-           .navbar-default .navbar-brand {
-            color: #f9ffff !important;
-        }
+         
     .navbar-default {
         background-color: #ec1717 !important;
         border-color: #ec1717 !important;
@@ -80,6 +78,16 @@
 
         }
         <?php endif;?>
+        .navbar-default .navbar-brand {
+            color: #fff !important;
+        }  
+    .navbar-default {
+        background-color: #ec1717 !important;
+        border-color: #ec1717 !important;
+    }
+    .navbar-default .navbar-nav>li>a {
+        color: #fff !important;
+    }
     </style>
 </head>
 <body>

@@ -8,7 +8,7 @@
             <a href="{{ URL::to('membership/') }}" class="btn btn-default"><i class="fa fa-chevron-left"></i> Kembali</a>
             <br><br>
             <div class="panel panel-default">
-                <div class="panel-heading">Form Diagnosa</div>
+                <div class="panel-heading">Pastikan Anda Memilih Gejala yang anda alami!</div>
 
                 <div class="panel-body">
                     @if (session('status'))

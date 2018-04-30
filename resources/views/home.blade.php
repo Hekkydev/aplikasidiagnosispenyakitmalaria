@@ -94,12 +94,7 @@
 
                     </tr>
 
-                    <tr>
-                      <td>Keterangan Diagnosa <br>
-                        Penyebab : {{ $h->nama_penyebab }}<br>
-                        Solusi : {{ $h->nama_solusi }}
-                      </td>
-                    </tr>
+                    
                     <tr>
                       <td>Gejala yang di alami <br>
                         <code>

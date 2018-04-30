@@ -48,7 +48,7 @@ class Controller extends BaseController
             // ],
 
             '5'=>[
-                'menu'=>'Role Diagnosis',
+                'menu'=>'Basis Aturan',
                 'url'=>'backend/basis-aturan',
                 'icon'=>'fa fa-refresh ',
                 ], 
