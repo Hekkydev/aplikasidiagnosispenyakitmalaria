@@ -1,0 +1,22 @@
+{
+  "name": "Cabinet",
+  "description": "Cabinet is Membership Forex Trading",
+  "main": "",
+  "authors": [
+    "Hekky Nurhikmat"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "cabinet",
+    "forex",
+    "system"
+  ],
+  "homepage": "",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
