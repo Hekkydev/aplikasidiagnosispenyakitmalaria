@@ -30,7 +30,9 @@
           user experience -->
     <script>
             jQuery(document).ready(function(){
-                $(".table").dataTable();
+                $(".table").dataTable({
+                    pageLength:50
+                });
                   $('.multiselect').multiselect();
             });
     </script>

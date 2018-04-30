@@ -27,26 +27,16 @@
                                     <td>:</td>
                                     <td><input type="text" name="nama_gejala"  class="form-control" value="{{ $data->nama_gejala }}"></td>
                                 </tr>
-                               <tr>
-                                    <td><label for="Present">Present</label></td>
+                                <tr>
+                                    <td><label for="Present">Nilai Belief (Bobot)</label></td>
                                     <td>:</td>
-                                    <td><input type="text" name="present_positif" value="{{ $data->present_positif }}" placeholder="nilai positif"> <input type="text" value="{{ $data->present_negatif }}" name="present_negatif" placeholder="nilai negatif"></td>
+                                    <td><input type="text" name="bobot" id="bobot" class="form-control" value="{{ $data->bobot }}">  </td>
                                 </tr>
                                 
                                 <tr>
-                                    <td><label for="Absen">Absen</label></td>
-                                    <td>:</td>
-                                    <td><input type="text" name="absen_positif" placeholder="nilai positif" value="{{ $data->absen_positif}}"> <input type="text" name="absen_negatif" placeholder=" nilai negatif" value="{{ $data->absen_negatif}}"></td>
-                                </tr>
-                                 <tr>
-                                    <td><label for="Absen">Probabilitas</label></td>
-                                    <td>:</td>
-                                    <td><input style="background:#f5f5f5" type="text" placeholder="nilai positif" value="{{ $data->probabilitas}}" readonly></td>
-                                </tr>
-                                <tr>
                                         <td> </td>
                                         <td></td>
-                                        <td><button type="submit" class="btn btn-primary">Update</button> <a href="{{ URL::to('backend/gejala')}}" class="btn btn-default">Kembali</a></td>
+                                        <td><button type="submit" class="btn btn-danger">Update</button> <a href="{{ URL::to('backend/gejala')}}" class="btn btn-default">Kembali</a></td>
                                     </tr>
                                     
                            </table>

@@ -25,7 +25,7 @@
                                     <td>
                                         <a href="{{ URL::to('backend/pasien/'.$p->id.'/info') }}" class="btn btn-danger"><i class="fa fa-search"></i></a>
 
-                                        <a href="{{ url('backnd/pasien'.$p->id.'/delete')}}" class="btn btn-default"><i class="fa fa-trash"></i></a>
+                                        <a href="{{ url('backend/pasien/'.$p->id.'/delete')}}" class="btn btn-default"><i class="fa fa-trash"></i></a>
                                     </td>
                                 </tr>
                                 @endforeach

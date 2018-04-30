@@ -3,7 +3,7 @@
 
 <div class="row">
         <div class="col-md-12">
-                <a href="{{ url('backend/penyakit/add')}}" class="btn btn-success btn-flat">tambah</a>
+                <a href="{{ url('backend/penyakit/add')}}" class="btn btn-danger btn-flat">tambah</a>
          </div>
 </div>
 <hr>
@@ -38,9 +38,9 @@
                                 <td>{{ $no++ }}</td>
                                 <td>{{ $p->kode_penyakit }} </td>
                                 <td>{{ $p->nama_penyakit }} </td>
-                                <td>{{ $p->definisi }}</td>
+                                <td>{{ str_limit($p->definisi,50,'...(baca selengkapnya)') }}</td>
                                 <td>
-                                    <a href="{{url('backend/penyakit/'.$p->id.'/update')}}" class="btn btn-md btn-default"><i class="fa fa-search"></i></a>
+                                    <a href="{{url('backend/penyakit/'.$p->id.'/update')}}" class="btn btn-md btn-danger"><i class="fa fa-search"></i></a>
                                     
                                     <a href="{{url('backend/penyakit/'.$p->id.'/delete')}}" class="btn btn-md btn-default"><i class="fa fa-trash"></i></a>
                                 </td>

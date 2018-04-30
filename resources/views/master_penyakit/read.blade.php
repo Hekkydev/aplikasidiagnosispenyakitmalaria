@@ -26,12 +26,12 @@
                                 <tr>
                                     <td> <label for="nama">Definisi</label></td>
                                     <td>:</td>
-                                    <td><input type="text" name="definisi" value="{{ $data->definisi }}" class="form-control"></td>
+                                    <td><textarea rows="8" name="definisi"  class="form-control">{{ $data->definisi }}</textarea></td>
                                 </tr>
                                 <tr>
                                     <td> <label for="nama">Keterangan</label></td>
                                     <td>:</td>
-                                    <td><textarea  name="keterangan"  class="form-control">{{ $data->keterangan }}</textarea>
+                                    <td><textarea rows="8" name="keterangan"  class="form-control">{{ $data->keterangan }}</textarea>
                                 </tr>
                                 <tr>
                                         <td> </td>

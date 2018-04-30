@@ -39,10 +39,7 @@ class GejalaController extends Controller
         $rules = [
             'kode_gejala'=>'required',
             'nama_gejala'=>'required',
-            'present_positif'=>'required',
-            'present_negatif'=>'required',
-            'absen_positif'=>'required',
-            'absen_negatif'=>'required'
+            'bobot'=>'required'
         ];
         $validator = Validator::make($request->all(), $rules);
         if ($validator->fails()) {
@@ -50,24 +47,15 @@ class GejalaController extends Controller
             return Redirect::to('backend/gejala/add');
         } else {
 
-            $nilai = (object) [
-                'pp'=>$request->present_positif,
-                'pn'=>$request->present_negatif,
-                'ap'=>$request->absen_positif,
-                'an'=>$request->absen_negatif
-            ];
+           
 
-            $nilai_probabilitas = $this->hitung_probabilitas($nilai);
+            $nilai_bobot = $request->bobot;
 
             $s = new Gejala();
             $s->kode_gejala = $request->kode_gejala;
             $s->nama_gejala = $request->nama_gejala;
             $s->keterangan = '';
-            $s->present_positif = $request->present_positif;
-            $s->present_negatif = $request->present_negatif;
-            $s->absen_negatif = $request->absen_negatif;
-            $s->absen_positif = $request->absen_positif;
-            $s->probabilitas = $nilai_probabilitas;
+            $s->bobot = $nilai_bobot;
             $s->save();
 
             Session::flash('message','Success  insert data');
@@ -90,10 +78,7 @@ class GejalaController extends Controller
             'id'=>'required',
             'kode_gejala'=>'required',
             'nama_gejala'=>'required',
-            'present_positif'=>'required',
-            'present_negatif'=>'required',
-            'absen_positif'=>'required',
-            'absen_negatif'=>'required'
+            'bobot'=>'required'
         ];
         $id = $e->id;
         $validator = Validator::make($e->all(), $rules);
@@ -102,14 +87,8 @@ class GejalaController extends Controller
             return Redirect::to('backend/gejala/'.$id.'/update');
         } else {
 
-            $nilai = (object) [
-                'pp'=>$e->present_positif,
-                'pn'=>$e->present_negatif,
-                'ap'=>$e->absen_positif,
-                'an'=>$e->absen_negatif
-            ];
-
-            $nilai_probabilitas = $this->hitung_probabilitas($nilai);
+          
+            $nilai_bobot = $request->bobot;
 
             // print_r($nilai_probabilitas); die();
 
@@ -118,11 +97,7 @@ class GejalaController extends Controller
             $s->kode_gejala = $e->kode_gejala;
             $s->nama_gejala = $e->nama_gejala;
             $s->keterangan = '';
-            $s->present_positif = $e->present_positif;
-            $s->present_negatif = $e->present_negatif;
-            $s->absen_negatif = $e->absen_negatif;
-            $s->absen_positif = $e->absen_positif;
-            $s->probabilitas = $nilai_probabilitas;
+            $s->bobot = $nilai_bobot;
             $s->save();
 
             Session::flash('message','Success  update data');
@@ -131,16 +106,7 @@ class GejalaController extends Controller
     }
 
 
-    function hitung_probabilitas($nilai)
-    {
-            $P1 = $nilai->pp * $nilai->pp;
-            $P2 = $nilai->pp * $nilai->ap;
-            $P3 = $nilai->ap * $nilai->pn;
-            $P4 = $nilai->ap * $nilai->an;
-
-            return  $P1 / ($P1 + $P3);
-            
-    }
+    
 
 
     

@@ -2,13 +2,13 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <a href="{{ url('backend/gejala/add')}}" class="btn btn-md btn-success">Tambah</a>
+            <a href="{{ url('backend/gejala/add')}}" class="btn btn-md btn-danger">Tambah</a>
         </div>
         <hr> 
        
         <div class="col-md-12">
                 @if(Session::has('message'))
-                <p class="alert {{ Session::get('alert-class', 'alert-info') }} alert-dismissable"> {{ Session::get('message') }}</p>
+                <p class="alert {{ Session::get('alert-class', 'alert-danger') }} alert-dismissable"> {{ Session::get('message') }}</p>
                 @endif
         </div>
 
@@ -24,7 +24,7 @@
                                 <th>No</th>
                                 <th>Kode Gejala</th>
                                 <th>Nama Gejala</th>
-                                <th>Probabilitas</th>
+                                <th>Nilai Belief (Bobot)</th>
                                 <th>Action</th>
                             </tr>
                         </thead>
@@ -35,9 +35,9 @@
                                     <td>{{ $no++ }}</td>
                                     <td>{{ $g->kode_gejala }}</td>
                                     <td>{{ $g->nama_gejala }}</td>
-                                    <td>{{ $g->probabilitas}}</td>
+                                    <td>{{ $g->bobot}}</td>
                                     <td>
-                                        <a href="{{ url('backend/gejala/'.$g->id.'/update')}}" class="btn btn-default"><i class="fa fa-search"></i></a>
+                                        <a href="{{ url('backend/gejala/'.$g->id.'/update')}}" class="btn btn-danger"><i class="fa fa-search"></i></a>
                                         <a href="{{ url('backend/gejala/'.$g->id.'/deleted')}}" class="btn btn-default"><i class="fa fa-trash"></i></a>
                                     </td>
                                 </tr>

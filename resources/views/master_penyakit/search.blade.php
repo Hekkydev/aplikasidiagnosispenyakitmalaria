@@ -14,7 +14,7 @@
                                 <input type="text" class="form-control" name="nama_penyakit" value="{{ isset($_GET['q']) ? $_GET['q'] : '' }}">
                             </div>
                             <div class="col-md-2">
-                                <button class="btn btn-success btn-flat" type="submit">Search</button>
+                                <button class="btn btn-danger btn-flat" type="submit">Search</button>
                             </div>
                         </div>
                     </form>

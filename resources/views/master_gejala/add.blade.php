@@ -22,20 +22,16 @@
                                     <td><input type="text" name="nama_gejala"  class="form-control"></td>
                                 </tr>
                                 <tr>
-                                    <td><label for="Present">Present</label></td>
+                                    <td><label for="Present">Nilai Belief (Bobot)</label></td>
                                     <td>:</td>
-                                    <td><input type="text" name="present_positif" placeholder="nilai positif"> <input type="text" name="present_negatif" placeholder="nilai negatif"></td>
+                                    <td><input type="text" name="bobot" id="bobot" class="form-control">  </td>
                                 </tr>
                                 
-                                <tr>
-                                    <td><label for="Absen">Absen</label></td>
-                                    <td>:</td>
-                                    <td><input type="text" name="absen_positif" placeholder="nilai positif"> <input type="text" name="absen_negatif" placeholder=" nilai negatif"></td>
-                                </tr>
+                               
                                 <tr>
                                         <td> </td>
                                         <td></td>
-                                        <td><button type="submit" class="btn btn-primary">Insert</button> <a href="{{ URL::to('backend/gejala')}}" class="btn btn-default">Kembali</a></td>
+                                        <td><button type="submit" class="btn btn-danger">Insert</button> <a href="{{ URL::to('backend/gejala')}}" class="btn btn-default">Kembali</a></td>
                                     </tr>
                                     
                            </table>

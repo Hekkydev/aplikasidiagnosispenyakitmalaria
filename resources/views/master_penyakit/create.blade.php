@@ -27,12 +27,12 @@
                                 <tr>
                                     <td> <label for="nama">Definisi</label></td>
                                     <td>:</td>
-                                    <td><input type="text" name="definisi"  class="form-control"></td>
+                                    <td><textarea name="definisi"  class="form-control" id="" cols="30" rows="8"></textarea></td>
                                 </tr>
                               <tr>
                                     <td> <label for="nama">Keterangan</label></td>
                                     <td>:</td>
-                                    <td><textarea  name="keterangan"  class="form-control"></textarea>
+                                    <td><textarea  name="keterangan" rows="8"  class="form-control"></textarea>
                                 </tr>
                                 <tr>
                                         <td> </td>

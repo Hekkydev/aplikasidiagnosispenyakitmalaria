@@ -36,28 +36,28 @@ class Controller extends BaseController
                  'icon'=>'fa fa-medkit',
                  ],
 
-            '4'=>[
-            'menu'=>'Daftar Solusi',
-            'url'=>'backend/solusi',
-            'icon'=>'fa fa-stethoscope ',
-            ],
-            '4.1'=>[
-                'menu'=>'Daftar Penyebab',
-                'url'=>'backend/penyebab',
-                'icon'=>'fa  fa-warning ',
-            ],
+            // '4'=>[
+            // 'menu'=>'Daftar Solusi',
+            // 'url'=>'backend/solusi',
+            // 'icon'=>'fa fa-stethoscope ',
+            // ],
+            // '4.1'=>[
+            //     'menu'=>'Daftar Penyebab',
+            //     'url'=>'backend/penyebab',
+            //     'icon'=>'fa  fa-warning ',
+            // ],
 
             '5'=>[
-                'menu'=>'Basis Aturan',
+                'menu'=>'Role Diagnosis',
                 'url'=>'backend/basis-aturan',
-                'icon'=>'fa fa-clipboard ',
+                'icon'=>'fa fa-refresh ',
                 ], 
 
-            '6'=>[
-                'menu'=>'Lihat Usulan',
-                'url'=>'backend/usulan',
-                'icon'=>'fa fa-heartbeat  ',
-                ], 
+            // '6'=>[
+            //     'menu'=>'Lihat Usulan',
+            //     'url'=>'backend/usulan',
+            //     'icon'=>'fa fa-heartbeat  ',
+            //     ], 
 
             '7'=>[
                 'menu'=>'Data Pasien',
