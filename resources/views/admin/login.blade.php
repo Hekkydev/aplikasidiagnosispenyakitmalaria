@@ -44,7 +44,7 @@
          <p class="login-box-msg">Masuk untuk memanajemen sistem pakar</p>
         @endif
     <form action="{{ url('administrator/login')}}" method="post">
-      {{ csrf_field() }}
+      <input type="hidden" name="_token" value="{{ csrf_token() }}">
       <div class="form-group has-feedback">
         <input type="text" class="form-control" placeholder="admin" name="username">
         <span class="glyphicon glyphicon-envelope form-control-feedback"></span>

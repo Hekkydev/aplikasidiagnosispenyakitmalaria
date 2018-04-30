@@ -26,12 +26,12 @@
                                             persentasi : <meter min="0" value="{{ number_format($h->nilai * 100 ,2) }}" max="100"></meter> {{ number_format($h->nilai * 100 ,2).' %'}}
                                         </td>
                                     </tr>
-                                    <tr>
+                                    {{--  <tr>
                                         <td>Keterangan Diagnosa <br>
                                             Penyebab : {{ $h->nama_penyebab }}<br>
                                             Solusi : {{ $h->nama_solusi }}
                                         </td>
-                                    </tr>
+                                    </tr>  --}}
                                     <tr>
                                         <td>Gejala yang di alami <br>
                                             <code>

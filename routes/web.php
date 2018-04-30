@@ -42,20 +42,20 @@ Route::group(['prefix' => 'backend','middleware' => 'checklogin'], function () {
     Route::post('gejala/addproses','GejalaController@addproses');
     Route::post('gejala/updateproses','GejalaController@updateproses');
     // PENYEBAB
-    Route::get('penyebab', 'PenyebabController@index');
-    Route::get('penyebab/add','PenyebabController@add');
-    Route::post('penyebab/add_proses','PenyebabController@add_proses');
-    Route::get('penyebab/{id}/edit/','PenyebabController@edit');
-    Route::post('penyebab/update_proses/','PenyebabController@update_proses');
-    Route::get('penyebab/{id}/delete/','PenyebabController@delete');
+    // Route::get('penyebab', 'PenyebabController@index');
+    // Route::get('penyebab/add','PenyebabController@add');
+    // Route::post('penyebab/add_proses','PenyebabController@add_proses');
+    // Route::get('penyebab/{id}/edit/','PenyebabController@edit');
+    // Route::post('penyebab/update_proses/','PenyebabController@update_proses');
+    // Route::get('penyebab/{id}/delete/','PenyebabController@delete');
 
       // SOLUSI
-    Route::get('solusi', 'SolusiController@index');
-    Route::get('solusi/add', 'SolusiController@add');
-    Route::get('solusi/{id}/update', 'SolusiController@update');
-    Route::get('solusi/{id}/deleted', 'SolusiController@deleted');
-    Route::post('solusi/addproses', 'SolusiController@addproses');
-    Route::post('solusi/updateproses', 'SolusiController@updateproses');
+    // Route::get('solusi', 'SolusiController@index');
+    // Route::get('solusi/add', 'SolusiController@add');
+    // Route::get('solusi/{id}/update', 'SolusiController@update');
+    // Route::get('solusi/{id}/deleted', 'SolusiController@deleted');
+    // Route::post('solusi/addproses', 'SolusiController@addproses');
+    // Route::post('solusi/updateproses', 'SolusiController@updateproses');
 
     //  BASIS ATURAN
     Route::get('basis-aturan','BasisController@index');
