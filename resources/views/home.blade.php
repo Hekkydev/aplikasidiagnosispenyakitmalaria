@@ -55,7 +55,7 @@
   </div>
     <div class="row">
         <div class="col-md-12">
-            <div class="panel panel-default">
+            <div class="panel panel-danger">
                 <div class="panel-heading"><i class="fa fa-dashboard"></i> Dashboard</div>
 
                 <div class="panel-body">
@@ -65,7 +65,7 @@
                         </div>
                     @endif
 
-                    Selamat datang di sistem pakar - Diagnosa Penyakit Pada Mata <br><br>
+                    Selamat datang di sistem pakar - Diagnosa Penyakit Malaria <br><br>
                     <div class="alert alert-info">
                       Sistem Pakar(dalam bahasa Inggris :expert system) adalah sistem informasi yang berisi dengan pengetahuan dari pakar sehingga dapat digunakan untuk konsultasi. Pengetahuan dari pakar di dalam sistem ini digunakan sebagi dasar oleh Sistem Pakar untuk menjawab pertanyaan (konsultasi).
                     </div>

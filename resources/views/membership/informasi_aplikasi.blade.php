@@ -15,7 +15,7 @@
 
                         <h3>Spesifikasi System</h3>
                         <address>
-                            Title : Aplikasi Diagnosa Penyakit Mata <br>
+                            Title : Aplikasi Diagnosa Penyakit Malaria <br>
                             Support PHP Version : 5.4 - 7.0 atau lebih <br>
                             Framework : LARAVEL 5.4 <br>
                             Composer : TRUE <br>
@@ -25,14 +25,14 @@
                         </address>
                         <h3>Metode Perhitungan</h3>
                         <address>
-                            Bayesian Network
+                            Dempster Shafer
                         </address>
                         <h3>Referensi</h3>
                         <address>
                             <a href="https://laravel.com/docs">https://laravel.com/docs/</a> <br>
                             <a href="https://jquery.com">https://jquery.com/</a> <br>
                             <a href="https://bootstrap.com">https://bootstrap.com/</a> <br>
-                            <a href="https://wikipedia.com/bayesiannetwork">https://wikipedia.com/bayesiannetwork/</a> <br>
+                            <a href="https://wikipedia.com/demstershafer">https://wikipedia.com/dempstershafer/</a> <br>
                         </address>
                     </div>
                 </div>

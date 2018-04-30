@@ -4,9 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Gejala;
 use App\Penyakitmodel as Penyakit;
-use App\Solusi;
 use App\Rules;
-use App\Penyebab;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
@@ -27,13 +25,10 @@ class BasisController extends Controller
             $rules = DB::table('master_rules')
                         ->select('master_rules.id',
                                  'master_penyakit.nama_penyakit',
-                                 'master_solusi.nama_solusi',
-                                 'master_penyebab.nama_penyebab',
+                                 'master_penyakit.kode_penyakit',
                                  'master_rules.kode_rules'
                             )
                         ->leftJoin('master_penyakit', 'master_rules.kode_penyakit', '=', 'master_penyakit.kode_penyakit')
-                        ->leftJoin('master_solusi', 'master_rules.kode_solusi', '=', 'master_solusi.kode_solusi')
-                        ->leftJoin('master_penyebab', 'master_rules.kode_penyebab', '=', 'master_penyebab.kode_penyebab')
                         ->groupBy('kode_rules')
                         ->get();       
 
@@ -52,13 +47,9 @@ class BasisController extends Controller
 
         $gejala = Gejala::all();
         $penyakit = Penyakit::all();
-        $solusi = Solusi::all();
-        $penyebab = Penyebab::all();
         $data = [
             'gejala'=>$gejala,
-            'solusi'=>$solusi,
             'penyakit'=>$penyakit,
-            'penyebab'=>$penyebab
         ];
         return view('master_base.add',compact('judul','menus','data'));
     }
@@ -72,8 +63,6 @@ class BasisController extends Controller
             $s = new Rules();
             $s->kode_rules = $kode_rules;
             $s->kode_penyakit = $e->kode_penyakit;
-            $s->kode_solusi = $e->kode_solusi;
-            $s->kode_penyebab = $e->kode_penyebab;
             $s->kode_gejala = $value;
             $s->save();
         }
@@ -89,13 +78,9 @@ class BasisController extends Controller
         $rules = DB::table('master_rules')
             ->select('master_rules.id',
                 'master_penyakit.nama_penyakit',
-                'master_solusi.nama_solusi',
-                'master_penyebab.nama_penyebab',
                 'master_rules.kode_rules'
             )
             ->leftJoin('master_penyakit', 'master_rules.kode_penyakit', '=', 'master_penyakit.kode_penyakit')
-            ->leftJoin('master_solusi', 'master_rules.kode_solusi', '=', 'master_solusi.kode_solusi')
-            ->leftJoin('master_penyebab', 'master_rules.kode_penyebab', '=', 'master_penyebab.kode_penyebab')
             ->groupBy('kode_rules')
             ->where('master_rules.id',$id)
             ->first();
@@ -109,14 +94,10 @@ class BasisController extends Controller
 
         $gejala = Gejala::all();
         $penyakit = Penyakit::all();
-        $solusi = Solusi::all();
-        $penyebab = Penyebab::all();
         $data = [
             'gejala'=>$gejala,
             'gejaladipilih'=>$gejaladipilih,
-            'solusi'=>$solusi,
             'penyakit'=>$penyakit,
-            'penyebab'=>$penyebab,
             'rules'=>$rules
         ];
         return view('master_base.detail', compact('menus','rules','data'));
@@ -140,8 +121,6 @@ class BasisController extends Controller
         {
             $kode_rules = $e->kode_rules;
             $kode_penyakit = $e->kode_penyakit;
-            $kode_penyebab = $e->kode_penyebab;
-            $kode_solusi = $e->kode_solusi;
 
             $gejala_dipilih = isset($e->to) ? $e->to : array();
             if($gejala_dipilih == TRUE)
@@ -151,8 +130,6 @@ class BasisController extends Controller
                     $s = new Rules();
                     $s->kode_rules = $kode_rules;
                     $s->kode_penyakit = $kode_penyakit;
-                    $s->kode_solusi = $kode_solusi;
-                    $s->kode_penyebab = $kode_penyebab;
                     $s->kode_gejala = $value;
                     $s->save();
                 }

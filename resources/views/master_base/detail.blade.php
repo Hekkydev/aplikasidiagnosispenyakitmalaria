@@ -31,39 +31,7 @@
                                 </div>
 
                             </div>
-                            <div class="col-md-offset-2 col-md-8">
-                                <div class="form-group">
-                                    <label for="" class="control-label">Pilih Penyebab</label>
-                                    <select name="kode_penyebab" id="" class="form-control">
-                                        @foreach($data['penyebab'] as $g)
-                                            @if($g->nama_penyebab == $rules->nama_penyebab)
-                                                <option value="{{ $g->kode_penyebab }}" selected>{{ $g->nama_penyebab }}</option>
-                                                @else
-                                                <option value="{{ $g->kode_penyebab }}">{{ $g->nama_penyebab }}</option>
-                                            @endif
-                                        @endforeach
-
-                                    </select>
-                                </div>
-
-                            </div>
-                            <div class="col-md-offset-2 col-md-8">
-                                <div class="form-group">
-                                    <label for="" class="control-label">Solusi</label>
-                                    <select name="kode_solusi" id="" class="form-control">
-
-                                        @foreach($data['solusi'] as $g)
-                                            @if($g->nama_solusi == $rules->nama_solusi)
-                                                <option value="{{ $g->kode_solusi }}" selected>{{ $g->nama_solusi }}</option>
-                                            @else
-                                            <option value="{{ $g->kode_solusi }}">{{ $g->nama_solusi }}</option>
-                                            @endif
-                                        @endforeach
-
-                                    </select>
-                                </div>
-
-                            </div>
+                           
                             <div class="col-md-offset-2 col-md-8">
 
                                 <div class="row">
@@ -71,7 +39,7 @@
                                         <label for="">Daftar Gejala</label>
                                         <div class="form-group">
 
-                                            <select name="from[]" class="multiselect form-control" size="8" multiple="multiple" data-right="#multiselect_to_1" data-right-all="#right_All_1" data-right-selected="#right_Selected_1" data-left-all="#left_All_1" data-left-selected="#left_Selected_1">
+                                            <select name="from[]" class="multiselect form-control" size="25" multiple="multiple" data-right="#multiselect_to_1" data-right-all="#right_All_1" data-right-selected="#right_Selected_1" data-left-all="#left_All_1" data-left-selected="#left_Selected_1">
                                                 @foreach($data['gejala'] as $g)
                                                     <option value="{{ $g->kode_gejala }}">{{ $g->kode_gejala }} - {{ $g->nama_gejala }}</option>
                                                 @endforeach
@@ -90,7 +58,7 @@
                                     <div class="col-md-5">
                                         <label for="">Gejala yang di pilih</label>
                                         <div class="form-group">
-                                            <select name="to[]" id="multiselect_to_1" class="form-control" size="8" multiple="multiple">
+                                            <select name="to[]" id="multiselect_to_1" class="form-control" size="25" multiple="multiple">
                                                 @foreach($data['gejaladipilih'] as $g)
                                                 <option value="{{ $g->kode_gejala }}">{{ $g->kode_gejala }} - {{ $g->nama_gejala }}</option>
                                                 @endforeach
@@ -102,7 +70,7 @@
                             </div>
                             <div class="col-md-offset-2 col-md-8">
                                 <div class="form-group">
-                                    <button class="btn btn-primary btn-flat" type="submit">Update</button>
+                                    <button class="btn btn-danger btn-flat" type="submit">Update</button>
                                     <a href="{{ url('backend/basis-aturan') }}" class="btn btn-default"><i class="fa fa-chevron-left"></i> Kembali</a>
                                 </div>
                             </div>

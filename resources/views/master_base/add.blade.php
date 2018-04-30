@@ -20,38 +20,14 @@
                                                 <select name="kode_penyakit" id="" class="form-control">
 
                                                         @foreach($data['penyakit'] as $g)
-                                                        <option value="{{ $g->kode_penyakit }}">{{ $g->nama_penyakit }}</option>
+                                                        <option value="{{ $g->kode_penyakit }}">{{ $g->nama_penyakit }} </option>
                                                          @endforeach
 
                                                 </select>
                                             </div>
 
                                 </div>
-                                <div class="col-md-offset-2 col-md-8">
-                                        <div class="form-group">
-                                                <label for="" class="control-label">Pilih Penyebab</label>
-                                                <select name="kode_penyebab" id="" class="form-control">
-                                                        @foreach($data['penyebab'] as $g)
-                                                        <option value="{{ $g->kode_penyebab }}">{{ $g->nama_penyebab }}</option>
-                                                         @endforeach
-
-                                                </select>
-                                            </div>
-
-                                </div>
-                                <div class="col-md-offset-2 col-md-8">
-                                        <div class="form-group">
-                                                <label for="" class="control-label">Solusi</label>
-                                                <select name="kode_solusi" id="" class="form-control">
-
-                                                        @foreach($data['solusi'] as $g)
-                                                        <option value="{{ $g->kode_solusi }}">{{ $g->nama_solusi }}</option>
-                                                         @endforeach
-
-                                                </select>
-                                            </div>
-
-                                </div>
+                             
                                 <div class="col-md-offset-2 col-md-8">
 
                                    <div class="row">
@@ -60,12 +36,12 @@
                                             <div class="form-group">
                                                     <!-- <select name="gejala" multiple id="" class="form-control multiselect" style="height:300px;">
                                                             @foreach($data['gejala'] as $g)
-                                                            <option value="{{ $g->kode_gejala }}">{{ $g->nama_gejala }}</option>
+                                                            <option value="{{ $g->kode_gejala }}">{{ $g->nama_gejala }} </option>
                                                              @endforeach
                                                     </select> -->
-                                                    <select name="from[]" class="multiselect form-control" size="8" multiple="multiple" data-right="#multiselect_to_1" data-right-all="#right_All_1" data-right-selected="#right_Selected_1" data-left-all="#left_All_1" data-left-selected="#left_Selected_1">
+                                                    <select name="from[]" class="multiselect form-control" size="25" multiple="multiple" data-right="#multiselect_to_1" data-right-all="#right_All_1" data-right-selected="#right_Selected_1" data-left-all="#left_All_1" data-left-selected="#left_Selected_1">
                                                             @foreach($data['gejala'] as $g)
-                                                            <option value="{{ $g->kode_gejala }}">{{ $g->kode_gejala }} - {{ $g->nama_gejala }}</option>
+                                                            <option value="{{ $g->kode_gejala }}">{{ $g->kode_gejala }} - {{ $g->nama_gejala }} </option>
                                                              @endforeach
                                                      </select>
 
@@ -82,7 +58,7 @@
                                        <div class="col-md-5">
                                             <label for="">Gejala yang di pilih</label>
                                             <div class="form-group">
-                                                    <select name="to[]" id="multiselect_to_1" class="form-control" size="8" multiple="multiple"></select>
+                                                    <select name="to[]" id="multiselect_to_1" class="form-control" size="25" multiple="multiple"></select>
 
                                                 </div>
                                        </div>
@@ -90,7 +66,7 @@
                                 </div>
                                 <div class="col-md-offset-2 col-md-8">
                                     <div class="form-group">
-                                        <button class="btn btn-primary btn-flat" type="submit">Save</button>
+                                        <button class="btn btn-danger btn-flat" type="submit">Save</button>
                                         <a href="{{ url('backend/basis-aturan') }}" class="btn btn-default"><i class="fa fa-chevron-left"></i> Kembali</a>
                                     </div>
                                 </div>

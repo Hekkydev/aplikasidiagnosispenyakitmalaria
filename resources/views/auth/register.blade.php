@@ -15,7 +15,7 @@
                             <label for="name" class="col-md-4 control-label">Name</label>
 
                             <div class="col-md-6">
-                                <input id="name" type="text" class="form-control" name="name" value="{{ ($_GET['name']) ? $_GET['name'] :  old('name') }}" required autofocus>
+                                <input id="name" type="text" class="form-control" name="name" value="{{ old('name') }}" required autofocus>
 
                                 @if ($errors->has('name'))
                                     <span class="help-block">
@@ -29,7 +29,7 @@
                             <label for="email" class="col-md-4 control-label">Umur</label>
 
                             <div class="col-md-6">
-                                <input id="umur" type="text" class="form-control" name="umur" value="{{ ($_GET['umur']) ? $_GET['umur']  : old('umur') }}" required>
+                                <input id="umur" type="text" class="form-control" name="umur" value="{{ old('umur') }}" required>
 
                                 @if ($errors->has('umur'))
                                     <span class="help-block">
@@ -43,7 +43,7 @@
                             <label for="email" class="col-md-4 control-label">alamat</label>
 
                             <div class="col-md-6">
-                                <textarea id="alamat"class="form-control" name="alamat" required>{{ ($_GET['alamat']) ? $_GET['alamat'] : old('alamat') }}</textarea>
+                                <textarea id="alamat"class="form-control" name="alamat" required>{{ old('alamat')  }}</textarea>
 
                                 @if ($errors->has('alamat'))
                                     <span class="help-block">
@@ -57,7 +57,7 @@
                             <label for="email" class="col-md-4 control-label">E-Mail Address</label>
 
                             <div class="col-md-6">
-                                <input id="email" type="email" class="form-control" name="email" value="{{ ($_GET['email']) ? $_GET['email'] : old('email') }}" required>
+                                <input id="email" type="email" class="form-control" name="email" value="{{ old('email')  }}" required>
 
                                 @if ($errors->has('email'))
                                     <span class="help-block">

@@ -2,7 +2,7 @@
 @section('content')
     <div class="row">
         <div class="col-md-12">
-            <a href="{{ url('backend/gejala/add')}}" class="btn btn-md btn-danger">Tambah</a>
+            <a href="{{ url('backend/gejala/add')}}" class="btn btn-md btn-danger btn-flat">Tambah</a>
         </div>
         <hr> 
        
