@@ -84,6 +84,8 @@
                                 <li>{{ $g->nama_gejala }}</li>
                             @endforeach
                         </ol>
+
+                        
                     </div>
                  </div>                                             
           </div>

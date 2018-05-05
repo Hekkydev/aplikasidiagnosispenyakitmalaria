@@ -37,13 +37,11 @@ class HomeController extends Controller
 
         $rules = DB::table('history_diagnosa')
             ->select(
-                'master_penyakit.nama_penyakit',
+                'history_diagnosa.kode_penyakit',
                 'history_diagnosa.created_at',
                 'history_diagnosa.gejala',
                 'history_diagnosa.nilai'
             )
-            ->leftJoin('master_penyakit', 'history_diagnosa.kode_penyakit', '=', 'master_penyakit.kode_penyakit')
-          
             ->where('history_diagnosa.kode_user',$user->id)->limit(1);
         $history = $rules->get();
 
@@ -59,14 +57,14 @@ class HomeController extends Controller
         return view('membership.diagnosa', compact('gejala'));
     }
 
-    public function prosesdiagnosa(Request $e)
-    {
-        
-       
 
+    public function ProsesDiagnosa(Request $e)
+    {
+         
         $jumlah_master_gejala = [];
         $master_gejala = 0;
         $daftar_gejala = [];
+        $daftar_gejala_2 = [];
         foreach ($e->all() as $key => $value) {
 
             if ($value == '1') {
@@ -74,77 +72,121 @@ class HomeController extends Controller
                 $data = $gejala->bobot;
                 $master_gejala += $gejala->bobot;
 
-                $result = $gejala->kode_gejala;
+                $result = ['kode_gejala'=>$gejala->kode_gejala,'nama_gejala'=>$gejala->nama_gejala,'bobot'=>$gejala->bobot];
                 array_push($jumlah_master_gejala, $data);
                 array_push($daftar_gejala, $result);
+                array_push($daftar_gejala_2, $result);
 
             }
-            //  else {
+        }
 
-            //     $master_gejala += 0;
-            //     $data = [];
-            //     array_push($jumlah_master_gejala, $data);
-            // }
+        $result_hasil_gejala = [];
+        
+       
+        $total = 0;
+        $no = 1;
+
+        $dempstershafer = array();
+        foreach ($daftar_gejala as $dg) {
+                $return = [
+                    $this->getStringPenyakit($dg['kode_gejala']),$dg['bobot']
+                ];
+
+                array_push($dempstershafer,$return);
         }
 
 
+        $daftar_gejala_shift = array_shift($daftar_gejala); 
+        foreach ($daftar_gejala as $dg) {
+                $return = [
+                    'hitung'=>'M'.$no,
+                    'nama_gejala'=>$dg['nama_gejala'],
+                    'bobot'=>$dg['bobot'],
+                    'hasil'=>1 - $dg['bobot'],
+                    'daftar_penyakit'=>$this->getPenyakit($dg['kode_gejala'])
+                ];
 
-        $array = implode("','",$daftar_gejala);
-//        $gejala_data = DB::connection('mysql')
-//            ->select("SELECT `kode_penyakit` FROM master_rules WHERE kode_gejala IN('$array')");
+                array_push($result_hasil_gejala,$return);
 
- //       $gejala_data = Rules::wherein('kode_gejala',$daftar_gejala)->first();
- 
-        $gejala_data = collect(DB::connection('mysql')
-                        ->select("SELECT COUNT(*),kode_penyakit FROM master_rules WHERE kode_gejala IN('$array') GROUP BY kode_penyakit ORDER BY COUNT(*) DESC"))->first();
-        if($gejala_data == TRUE){
-            $penyakit = $this->info_penyakit($gejala_data->kode_penyakit);
-
-            //print_r($gejala); die();
-
-
-            $jumlah_nilai = $master_gejala;
-            $jml_pembagi = count($jumlah_master_gejala);
-            $hasil = $jumlah_nilai / $jml_pembagi;
-
-            //print_r($hasil); die();
-            $data = (object)[
-                'penyakit' => $penyakit,
-                'hasil' => $hasil
-            ];
-
-
-            $userId = Auth::id();
-            $user = User::find($userId);
-
-            $gejala_data_2 = [];
-            $gejala_data_3 = '';
-            foreach ($e->all() as $key => $value) {
-                if ($value == '1') {
-                    $gejala_set =  ['kode_gejala'=>$key,'nama_gejala'=>$this->info_gejala($key),'bobot'=>$this->prob_gejala($key)];
-                    $gejala_data_3 .= $this->info_gejala($key).',';
-                    array_push($gejala_data_2, $gejala_set);
-                }
-            }
-
-            $daftar_gejala_dipilih = $gejala_data_2;
-            //dd($hasil);
-            $s = new  History();
-            $s->kode_user = $user->id;
-            $s->kode_penyakit = $gejala_data->kode_penyakit;
-            $s->gejala = $gejala_data_3;
-            $s->nilai = $hasil;
-            $s->save();
-
-
-
-            return view('membership.diagnosa_hasil', compact('data','user','daftar_gejala_dipilih'));
-        }else{
-           return redirect('membership/diagnosa');
+                $total += $no;
+            $no++;
         }
+       
+       $nilai_hitung = count($result_hasil_gejala) +1;
+        $result_hasil_gejala_shift = [
+            
+                   [
+                    'hitung'=>'M'.$nilai_hitung,
+                    'nama_gejala'=>$daftar_gejala_shift['nama_gejala'],
+                    'bobot'=>$daftar_gejala_shift['bobot'],
+                    'hasil'=>1 - $daftar_gejala_shift['bobot'],
+                    'daftar_penyakit'=>$this->getPenyakit($daftar_gejala_shift['kode_gejala'])
+                   ]
+        ];
 
+
+       
+
+        $userId = Auth::id();
+        $user = User::find($userId);
+        $hitung = $result_hasil_gejala;
+        $hitung_2 = $result_hasil_gejala_shift;
+        $dempstershaferResult = $this->dempstershafer($dempstershafer);
+        return view('membership.diagnosa_hasil_1',compact('hitung','user','daftar_gejala','daftar_gejala_2','hitung_2','response','dempstershaferResult'));
 
     }
+
+    function dempstershafer($mixarray)
+    {
+        $data = $mixarray;
+        $all=array();
+        foreach($data as $d) $all[]=$d[0];
+        $unique=array_unique(explode(',',implode(',',$all)));
+        $fod=implode(',',$unique);
+        //echo "<pre>";
+        //echo $fod;
+        $rst=array();
+        while(!empty($data)){
+            $result=array();
+            $symptom[0]=array_shift($data);
+            $symptom[1]=array($fod,1-$symptom[0][1]);
+            if(empty($rst))
+                $result[0]=array_shift($data);
+            else
+                foreach($rst as $k=>$r)
+                    if($k!="&theta;")
+                        $result[]=array($k,$r);
+            $theta=1;
+            foreach($result as $r) $theta-=$r[1];
+            $result[]=array($fod,$theta);
+            $m=count($result);
+            $rst=array();
+            for($x=0;$x<$m;$x++){
+                for($y=0;$y<2;$y++){
+                    if(!($x==$m-1 && $y==1)){
+                        $v=explode(',',$symptom[$y][0]);
+                        $w=explode(',',$result[$x][0]);
+                        sort($v);sort($w);
+                        $vw=array_intersect($v,$w);
+                        if(empty($vw)) $v="&theta;";else $v=implode(',',$vw);
+                        if(!isset($rst[$v])) $rst[$v]=$result[$x][1]*$symptom[$y][1];
+                        else $rst[$v]+=$result[$x][1]*$symptom[$y][1];
+                    }
+                }
+            }
+            foreach($rst as $k=>$r) if($k!="&theta;") $rst[$k]=$r/(1-(isset($rst["&theta;"])?$rst["&theta;"]:0));
+            //print_r($rst);
+        }
+        unset($rst["&theta;"]);
+        arsort($rst);
+        return $rst;
+    }
+
+
+
+
+  
+
 
     function info_penyakit($id)
     {
@@ -177,6 +219,36 @@ class HomeController extends Controller
         return $gejala->bobot;
     }
 
+    public function getPenyakit($kode_gejala)
+    {
+           $penyakit =  DB::table('master_rules')
+                            ->select('nama_penyakit')
+                            ->leftJoin('master_penyakit','master_rules.kode_penyakit','=','master_penyakit.kode_penyakit')
+                            ->where('master_rules.kode_gejala',$kode_gejala)
+                            ->get();
+
+
+         return $penyakit;
+    }
+
+    public function getStringPenyakit($kode_gejala)
+    {
+        $penyakit =  DB::table('master_rules')
+                            ->select('nama_penyakit')
+                            ->leftJoin('master_penyakit','master_rules.kode_penyakit','=','master_penyakit.kode_penyakit')
+                            ->where('master_rules.kode_gejala',$kode_gejala)
+                            ->get();
+
+
+          $hasil = '';
+          foreach ($penyakit as $p) {
+                $hasil .= $p->nama_penyakit.' ,';
+          }
+
+          return substr($hasil,0,-1);
+    
+    }
+
 
     function viewhasil()
     {
@@ -184,12 +256,11 @@ class HomeController extends Controller
         $user = User::find($userId);
         $rules = DB::table('history_diagnosa')
             ->select(
-                'master_penyakit.nama_penyakit',
+                'history_diagnosa.kode_penyakit',
                 'history_diagnosa.created_at',
                 'history_diagnosa.gejala',
                 'history_diagnosa.nilai'
             )
-            ->leftJoin('master_penyakit', 'history_diagnosa.kode_penyakit', '=', 'master_penyakit.kode_penyakit')
             ->where('history_diagnosa.kode_user',$user->id);
         $history = $rules->get();
         return view('membership.diagnosa_hasil_review',compact('user','history'));

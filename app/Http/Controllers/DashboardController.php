@@ -37,7 +37,7 @@ class DashboardController extends Controller
 
         $penyakit = DB::select('SELECT COUNT(history_diagnosa.kode_penyakit) AS jumlah_penyakit,history_diagnosa.kode_penyakit,master_penyakit.nama_penyakit FROM history_diagnosa LEFT JOIN master_penyakit ON master_penyakit.kode_penyakit = history_diagnosa.kode_penyakit GROUP BY history_diagnosa.kode_penyakit ');
         $pasien = User::all();
-        //print_r($data); die();
+        // print_r($data); die();
 
         return view('dashboard.page',compact('menus','judul','judul_desc','data','penyakit','pasien'));
     }

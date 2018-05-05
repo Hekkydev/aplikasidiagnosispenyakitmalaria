@@ -85,7 +85,7 @@
                   <table class="table">
                     <thead>
                     <tr>
-                      <th>Penyakit : {{ $h->nama_penyakit }}</th>
+                      <th>Penyakit : {{ $h->kode_penyakit }}</th>
                     </tr>
                     <tr>
                       <td>Nilai : {{ $h->nilai}}   <br>

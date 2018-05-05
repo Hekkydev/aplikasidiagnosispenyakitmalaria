@@ -19,11 +19,27 @@
 
         <link href="{{ asset("/bower_components/admin-lte/dist/css/skins/skin-red-light.min.css")}}" rel="stylesheet" type="text/css" />
         <link rel="shortcut icon" href="{{ asset("frontend/favicon.jpg") }} " type="image/x-icon">
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.16/css/dataTables.bootstrap.min.css">
         <link rel="stylesheet" type="" href="{{ asset("/bower_components/datatables.net-bs/css/dataTables.bootstrap.css")}}">
         <style>
             .table{
                 font-size: 11px;
             }
+      /*      .pagination>.active>span:hover {
+                z-index: 3;
+                color: #fff;
+                cursor: default;
+                background-color: #dd4b39 !important;
+                border-color: rgba(0,0,0,0.2) !important;
+            }*/
+
+            .pagination>.active>a, .pagination>.active>a:focus, .pagination>.active>a:hover, .pagination>.active>span, .pagination>.active>span:focus, .pagination>.active>span:hover {
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #dd4b39 !important;
+    border-color: #dd4b39 !important;
+}
         </style>
     </head>
     <body class="skin-red-light">
@@ -102,7 +118,7 @@
                 <!-- Sidebar user panel (optional) -->
                 <div class="user-panel">
                     <div class="pull-left image">
-                        <img src="{{ asset("/bower_components/admin-lte/dist/img/doctor.png") }}" class="img-circle" alt="User Image" />
+                        <img src="{{ asset("bower_components/admin-lte/dist/img/doctor.png") }}" class="img-circle" alt="User Image" />
                     </div>
                     <div class="pull-left info">
                         <p>{{  session('nama_lengkap') }}</p>

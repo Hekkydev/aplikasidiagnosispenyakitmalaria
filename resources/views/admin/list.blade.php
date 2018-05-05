@@ -2,7 +2,7 @@
     @section('content')
       <div class="row">
         <div class="col-md-12">
-          <a href="{{ url('backend/account/add')}}" class="btn btn-primary">Tambah</a>
+          <a href="{{ url('backend/account/add')}}" class="btn btn-danger">Tambah</a>
         </div>
       </div>
       <hr>
@@ -43,7 +43,7 @@
                               <td>{{ $item->username }}</td>
                               <td>*****</td>
                               <td>
-                                <a href="{{ url('backend/account/'.$item->id.'/update')}}" class="btn btn-default"><i class="fa fa-search"></i></a>
+                                <a href="{{ url('backend/account/'.$item->id.'/update')}}" class="btn btn-danger"><i class="fa fa-search"></i></a>
                                 <a href="{{ url('backend/account/'.$item->id.'/delete')}}" class="btn btn-default"><i class="fa fa-trash"></i></a>
                               </td>
                             </tr>

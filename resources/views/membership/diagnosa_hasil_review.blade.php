@@ -16,19 +16,14 @@
                                 <table class="table">
                                     <thead>
                                     <tr>
-                                        <th>Penyakit : {{ $h->nama_penyakit }}</th>
+                                        <th>Penyakit : {{ $h->kode_penyakit }}</th>
                                     </tr>
                                     <tr>
                                         <td>Nilai : {{ $h->nilai}}   <br>
                                             persentasi : <meter min="0" value="{{ number_format($h->nilai * 100 ,2) }}" max="100"></meter> {{ number_format($h->nilai * 100 ,2).' %'}}
                                         </td>
                                     </tr>
-                                    {{--  <tr>
-                                        <td>Keterangan Diagnosa <br>
-                                            Penyebab : {{ $h->nama_penyebab }}<br>
-                                            Solusi : {{ $h->nama_solusi }}
-                                        </td>
-                                    </tr>  --}}
+                                 
                                     <tr>
                                         <td>Gejala yang di alami <br>
                                             <code>

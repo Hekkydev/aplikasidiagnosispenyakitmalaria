@@ -117,7 +117,7 @@
 
                     @foreach($penyakit as $p)
                         <tr style="height: 40px">
-                            <th>{{ $p->nama_penyakit }}</th>
+                            <th>{{ $p->kode_penyakit }}</th>
                             <th>:</th>
                             <th><meter min="0" max="100" value="{{ ($p->jumlah_penyakit * 100) / $data['penyakit']  }}"></meter>  {{ number_format(($p->jumlah_penyakit * 100) / $data['penyakit'],2)  }} %</th>
                         </tr>

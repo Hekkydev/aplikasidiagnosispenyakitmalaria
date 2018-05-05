@@ -21,9 +21,9 @@
     <!-- Bootstrap 3.3.2 JS -->
     <script src="{{ asset ("/bower_components/bootstrap/dist/js/bootstrap.min.js") }}" type="text/javascript"></script>
     <!-- AdminLTE App -->
-    <script src="{{ asset ("/bower_components/admin-lte/dist/js/admin-lte.js") }}" type="text/javascript"></script>
+    <script src="{{ asset ("\bower_components\admin-lte\dist\js\adminlte.js") }}" type="text/javascript"></script>
     <script src="{{ asset ("/bower_components/datatables.net/js/jquery.dataTables.js")}}" type="text/javascript"></script>
-    
+    <script src="{{ asset("\bower_components\datatables.net-bs\js\dataTables.bootstrap.min.js")}}"></script>
     <script src="{{ asset("/bower_components\dualist\dist\js\multiselect.js")}}"></script>
     <!-- Optionally, you can add Slimscroll and FastClick plugins.
           Both of these plugins are recommended to enhance the

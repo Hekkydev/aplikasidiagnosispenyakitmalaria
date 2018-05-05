@@ -22,7 +22,7 @@
                                 <tr>
                                     <td><?php echo ++$no?></td>
                                     <td>{{$u->name}}</td>
-                                    <td>{{ $u->nama_penyakit }}</td>
+                                    <td>{{ $u->kode_penyakit }}</td>
                                     <td>{{ $u->nilai }}</td>
                                     <td>{{ number_format($u->nilai * 100 ,2).'%' }}</td>
                                     <td>
